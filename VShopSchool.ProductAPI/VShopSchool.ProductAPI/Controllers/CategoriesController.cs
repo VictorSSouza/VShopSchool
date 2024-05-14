@@ -26,7 +26,7 @@ namespace VShopSchool.ProductAPI.Controllers
             return Ok(catsDTO);
         }
 
-        [HttpGet("Produtos")]
+        [HttpGet("Products")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategoriesProducts()
         {
             var catsDTO = await _catService.GetCategoriesProducts();
@@ -37,7 +37,7 @@ namespace VShopSchool.ProductAPI.Controllers
             return Ok(catsDTO);
         }
 
-        [HttpGet("{id}", Name ="GetCategoria")]
+        [HttpGet("{id}", Name ="GetCategory")]
         public async Task<ActionResult<CategoryDTO>> GetCategoryById(int id)
         {
             var catDTO = await _catService.GetCatById(id);
@@ -55,7 +55,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return BadRequest("Dados inválidos");
 
             await _catService.AddCat(catDTO);
-            return new CreatedAtRouteResult("Categoria", new { id = catDTO.CategoryId, catDTO });
+            return new CreatedAtRouteResult("Category", new { id = catDTO.CategoryId, catDTO });
         }
 
         [HttpPut("{id}")]

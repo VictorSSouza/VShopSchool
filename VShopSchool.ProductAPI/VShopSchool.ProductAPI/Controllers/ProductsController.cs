@@ -26,7 +26,7 @@ namespace VShopSchool.ProductAPI.Controllers
             return Ok(prodsDTO);
         }
 
-        [HttpGet("{id}", Name ="GetProduto")]
+        [HttpGet("{id}", Name ="GetProduct")]
         public async Task<ActionResult<ProductDTO>> GetProductById(int id)
         {
             var prodDTO = await _prodService.GetProdById(id);
@@ -46,7 +46,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return BadRequest("Dados inválidos");
 
             await _prodService.AddProd(prodDTO);
-            return new CreatedAtRouteResult("Produto", new { id = prodDTO.Id, prodDTO });
+            return new CreatedAtRouteResult("Product", new { id = prodDTO.Id, prodDTO });
         }
 
         [HttpPut("{id}")]

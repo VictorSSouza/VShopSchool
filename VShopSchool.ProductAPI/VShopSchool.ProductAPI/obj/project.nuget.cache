@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ALCu7NxtSr2kQvk61phCTc0v0O1t2kkdxbmb55zwJyrgeRdU9+YIUt1qyXsTv3dDM4wlLRLWv16KXalKIVXRYw==",
+  "dgSpecHash": "XuB/JZhLcjIoskekrouhbldBQ5Fw/b8cmdvdGoyIcyPSgBaAbiw1qXO5VOd6OJwGWmDFJfEffc2O7vdtpuhKHw==",
   "success": true,
-  "projectFilePath": "C:\\temp\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
+  "projectFilePath": "C:\\temp\\VShopSchool\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victo\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

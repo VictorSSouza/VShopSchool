@@ -3528,11 +3528,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\temp\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
+      "projectUniqueName": "C:\\temp\\VShopSchool\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
       "projectName": "VShopSchool.ProductAPI",
-      "projectPath": "C:\\temp\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
+      "projectPath": "C:\\temp\\VShopSchool\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
       "packagesPath": "C:\\Users\\victo\\.nuget\\packages\\",
-      "outputPath": "C:\\temp\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\obj\\",
+      "outputPath": "C:\\temp\\VShopSchool\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
