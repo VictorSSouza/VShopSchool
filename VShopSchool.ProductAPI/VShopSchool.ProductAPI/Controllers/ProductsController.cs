@@ -46,7 +46,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return BadRequest("Dados inválidos");
 
             await _prodService.AddProd(prodDTO);
-            return new CreatedAtRouteResult("Product", new { id = prodDTO.Id, prodDTO });
+            return new CreatedAtRouteResult("GetProduct", new { id = prodDTO.Id, prodDTO });
         }
 
         [HttpPut("{id}")]

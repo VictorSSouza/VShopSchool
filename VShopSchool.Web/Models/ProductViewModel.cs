@@ -18,7 +18,7 @@ namespace VShopSchool.Web.Models
         public string? Description { get; set; }
 
         [Required]
-	    [Display(Name="Quantidade em estoque")]
+	    [Display(Name="Estoque(qtd)")]
         public long Stock { get; set; }
 
         [Required]
