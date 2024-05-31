@@ -7,7 +7,7 @@ namespace VShopSchool.Web.Services
 	public class CategoryService : ICategoryService
 	{
 		private readonly IHttpClientFactory _clientFactory;
-		private const string apiEndPoint = "api/categories/";
+		private const string apiEndPoint = "api/Categories/";
 		private readonly JsonSerializerOptions _options;
 
 		public CategoryService(IHttpClientFactory clientFactory)

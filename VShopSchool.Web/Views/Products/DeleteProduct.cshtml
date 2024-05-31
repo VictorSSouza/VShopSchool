@@ -1,0 +1,58 @@
+﻿@model VShopSchool.Web.Models.ProductViewModel
+
+<h3>Excluir Produto</h3>
+<h4>Você tem certeza que vai excluir esse produto?</h4>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+    </dl>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <img src="~/images/@Model.ImageUrl" />
+        </div>
+    </div>
+
+
+    <form asp-action="DeleteProduct">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group" style="padding-top: 10px">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-info">Voltar para a lista</a>
+        </div>
+    </form>
+</div>

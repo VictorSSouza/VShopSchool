@@ -49,20 +49,18 @@ namespace VShopSchool.ProductAPI.Controllers
             return new CreatedAtRouteResult("GetProduct", new { id = prodDTO.Id, prodDTO });
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] ProductDTO prodDTO)
+        [HttpPut()]
+        public async Task<ActionResult<ProductDTO>> Put([FromBody] ProductDTO prodDTO)
         {
-            if (id == prodDTO.Id)
-                return NotFound("Produto não encontrado");
-            if (prodDTO is null)
-                return BadRequest();
+            if (prodDTO == null)
+                return BadRequest("Dados inválidos");
 
             await _prodService.UpdateProd(prodDTO);
-            return Ok("Produto Atualizado /n" + prodDTO);
+            return Ok(prodDTO);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult<ProductDTO>> Delete(int id)
         {
             var prodDTO = await _prodService.GetProdById(id);
 
@@ -70,7 +68,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return NotFound("Produto não encontrado");
 
             await _prodService.RemoveProd(id);
-            return Ok("Produto Removido /n" + prodDTO);
+            return Ok(prodDTO);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace VShopSchool.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> CreateProduct()
+        public async Task<IActionResult> CreateProduct()
         {
 			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(), "CategoryId", "Name");
 
@@ -35,7 +35,7 @@ namespace VShopSchool.Web.Controllers
 		}
 
         [HttpPost]
-        public async Task<ActionResult> CreateProduct(ProductViewModel productVM)
+        public async Task<IActionResult> CreateProduct(ProductViewModel productVM)
         {
 			if (ModelState.IsValid)
 			{
@@ -49,5 +49,53 @@ namespace VShopSchool.Web.Controllers
 			}
 			return View(productVM);
 		}
-    }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateProduct(int id)
+        {
+			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(), "CategoryId", "Name");
+
+			var result = await _productService.FindProdById(id);
+
+			if (result is null)
+				return View("Error");
+
+			return View(result);
+		}
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProduct(ProductViewModel productVM)
+        {
+			if (ModelState.IsValid)
+			{
+				var result = await _productService.UpdateProduct(productVM);
+
+				if (result is not null)
+					return RedirectToAction(nameof(Index));
+			}
+			return View(productVM);
+		}
+
+		[HttpGet]
+		public async Task<ActionResult<ProductViewModel>> DeleteProduct(int id)
+		{
+			var result = await _productService.FindProdById(id);
+
+			if (result is null)
+				return View("Error");
+
+			return View(result);
+		}
+
+		[HttpPost, ActionName("DeleteProduct")]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+			var result = await _productService.DeleteProdById(id);
+
+			if (!result)
+				return View("Error");
+
+			return RedirectToAction("Index");
+		}
+	}
 }

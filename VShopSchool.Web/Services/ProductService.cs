@@ -9,7 +9,7 @@ namespace VShopSchool.Web.Services
     public class ProductService : IProductService
     {
         private readonly IHttpClientFactory _clientFactory;
-        private const string apiEndPoint = "api/products/";
+        private const string apiEndPoint = "api/Products/";
         private readonly JsonSerializerOptions _options;
         private ProductViewModel productVM;
         private IEnumerable<ProductViewModel> productsVM;
