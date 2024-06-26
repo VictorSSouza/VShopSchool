@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using VShopSchool.Web.Services;
 using VShopSchool.Web.Services.Interfaces;
 
@@ -13,8 +14,30 @@ namespace VShopSchool.Web
             builder.Services.AddControllersWithViews();
 	        builder.Services.AddHttpClient("ProductAPI", c=>
 	        {
-		        c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProductAPI"]);
+		        c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProductApi"]);
 	        });
+            builder.Services.AddAuthentication(options =>
+                    {
+                        options.DefaultScheme = "Cookies";
+                        options.DefaultChallengeScheme = "oidc";
+
+                    }).AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
+                      .AddOpenIdConnect("oidc", options =>
+                        {
+                            options.Authority = builder.Configuration["ServiceUri:IdentityServer"];
+                            options.GetClaimsFromUserInfoEndpoint = true;
+                            options.ClientId = "vshopschool";
+                            options.ClientSecret = builder.Configuration["Client:Secret"];
+                            options.ResponseType = "code";
+                            options.ClaimActions.MapJsonKey("role", "role", "role");
+                            options.ClaimActions.MapJsonKey("sub", "sub", "sub");
+                            options.TokenValidationParameters.NameClaimType = "name";
+                            options.TokenValidationParameters.RoleClaimType = "role";
+                            options.Scope.Add("vshopschool");
+                            options.SaveTokens = true;
+                        }
+             );
+
 		    builder.Services.AddScoped<IProductService, ProductService>();
 			builder.Services.AddScoped<ICategoryService, CategoryService>();
 
@@ -32,7 +55,7 @@ namespace VShopSchool.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

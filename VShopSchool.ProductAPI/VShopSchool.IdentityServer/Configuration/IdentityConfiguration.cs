@@ -43,8 +43,8 @@ namespace VShopSchool.IdentityServer.Configuration
                 ClientId = "vshopschool",
                 ClientSecrets = { new Secret("tastetheblood#swallowyourpride".Sha256())},
                 AllowedGrantTypes = GrantTypes.Code, // Via codigo
-		        RedirectUris = {"https://localhost:7165/signin-oidc"}, // Login
-		        PostLogoutRedirectUris = {"https://localhost:7165/signout-callback-oidc"}, // Logout
+		        RedirectUris = {"https://localhost:7029/signin-oidc"}, // Login
+		        PostLogoutRedirectUris = {"https://localhost:7029/signout-callback-oidc"}, // Logout
 		        AllowedScopes = new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,

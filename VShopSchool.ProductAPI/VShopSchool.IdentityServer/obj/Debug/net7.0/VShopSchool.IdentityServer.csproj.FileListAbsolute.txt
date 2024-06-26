@@ -60,3 +60,4 @@ C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.IdentityServer\obj\Debug\
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.IdentityServer\obj\Debug\net7.0\VShopSchool.IdentityServer.pdb
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.IdentityServer\obj\Debug\net7.0\VShopSchool.IdentityServer.genruntimeconfig.cache
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.IdentityServer\obj\Debug\net7.0\ref\VShopSchool.IdentityServer.dll
+C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.IdentityServer\bin\Debug\net7.0\keys\is-signing-key-B548F61C33A5AC8711CBE3B8DC32D70B.json

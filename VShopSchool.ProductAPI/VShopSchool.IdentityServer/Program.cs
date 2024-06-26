@@ -37,6 +37,8 @@ namespace VShopSchool.IdentityServer
 
 		    builderIdentityServer.AddDeveloperSigningCredential();
 
+			builder.Services.AddScoped<IDatabaseSeedInitializer, DatabaseIdentityServerInitializer>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -54,11 +56,24 @@ namespace VShopSchool.IdentityServer
 	        app.UseIdentityServer();
             app.UseAuthorization();
 
+	        SeedDatabaseIdentityServer(app);
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+	    
+	        void SeedDatabaseIdentityServer(IApplicationBuilder app)
+	        {
+				    using (var serviceScopes = app.ApplicationServices.CreateScope())
+				    {
+                        var initRolesUsers = serviceScopes.ServiceProvider.GetService<IDatabaseSeedInitializer>();
+
+                        initRolesUsers.InitializeSeedRoles();
+                        initRolesUsers.InitializeSeedUsers();
+                    }	
+	        }
         }
     }
 }

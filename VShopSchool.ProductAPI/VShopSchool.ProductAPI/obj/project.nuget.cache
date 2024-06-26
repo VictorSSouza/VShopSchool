@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XuB/JZhLcjIoskekrouhbldBQ5Fw/b8cmdvdGoyIcyPSgBaAbiw1qXO5VOd6OJwGWmDFJfEffc2O7vdtpuhKHw==",
+  "dgSpecHash": "qpg6M3qdXy1k46urvtDCP7XQPp0q8qsx/DecKpPAO3bBXwzsUIGuVL4Lqujsax2wkkZWX6xdIkdetEVoLZ+Nuw==",
   "success": true,
   "projectFilePath": "C:\\temp\\VShopSchool\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI\\VShopSchool.ProductAPI.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\victo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.20\\microsoft.aspnetcore.authentication.jwtbearer.7.0.20.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

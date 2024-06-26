@@ -156,3 +156,4 @@ C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.ProductAPI\obj\Debug\net7
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.ProductAPI\obj\Debug\net7.0\VShopSchool.ProductAPI.csproj.CopyComplete
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.ProductAPI\obj\Debug\net7.0\VShopSchool.ProductAPI.genruntimeconfig.cache
 C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.ProductAPI\obj\Debug\net7.0\ref\VShopSchool.ProductAPI.dll
+C:\temp\VShopSchool\VShopSchool.ProductAPI\VShopSchool.ProductAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

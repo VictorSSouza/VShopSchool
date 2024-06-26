@@ -29,3 +29,12 @@ C:\temp\VShopSchool\VShopSchool.Web\obj\Debug\net7.0\refint\VShopSchool.Web.dll
 C:\temp\VShopSchool\VShopSchool.Web\obj\Debug\net7.0\VShopSchool.Web.pdb
 C:\temp\VShopSchool\VShopSchool.Web\obj\Debug\net7.0\VShopSchool.Web.genruntimeconfig.cache
 C:\temp\VShopSchool\VShopSchool.Web\obj\Debug\net7.0\ref\VShopSchool.Web.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\temp\VShopSchool\VShopSchool.Web\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\temp\VShopSchool\VShopSchool.Web\obj\Debug\net7.0\VShopSchool.Web.csproj.CopyComplete
