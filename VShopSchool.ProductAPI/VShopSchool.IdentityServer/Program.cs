@@ -1,8 +1,10 @@
+using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VShopSchool.IdentityServer.Configuration;
 using VShopSchool.IdentityServer.Data;
 using VShopSchool.IdentityServer.Data.Context;
+using VShopSchool.IdentityServer.Services;
 
 namespace VShopSchool.IdentityServer
 {
@@ -39,6 +41,7 @@ namespace VShopSchool.IdentityServer
 
 			builder.Services.AddScoped<IDatabaseSeedInitializer, DatabaseIdentityServerInitializer>();
 
+            builder.Services.AddScoped<IProfileService, ProfileAppService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

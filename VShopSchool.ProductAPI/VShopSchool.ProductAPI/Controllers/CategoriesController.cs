@@ -9,7 +9,6 @@ namespace VShopSchool.ProductAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _catService;
@@ -52,6 +51,7 @@ namespace VShopSchool.ProductAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Admin)]
         public async Task<ActionResult> Post([FromBody] CategoryDTO catDTO)
         {
             if (catDTO == null)
@@ -62,6 +62,7 @@ namespace VShopSchool.ProductAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = Role.Admin)]
         public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO catDTO)
         {
             if (id != catDTO.CategoryId)
@@ -70,7 +71,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return BadRequest();
 
             await _catService.UpdateCat(catDTO);
-            return Ok("Categoria Atualizada /n" + catDTO);
+            return Ok(catDTO);
         }
 
         [HttpDelete("{id}")]
@@ -83,7 +84,7 @@ namespace VShopSchool.ProductAPI.Controllers
                 return NotFound("Categoria não encontrada");
 
             await _catService.RemoveCat(id);
-            return Ok("Categoria Removida /n" + catDTO);
+            return Ok(catDTO);
         }
     }
 }

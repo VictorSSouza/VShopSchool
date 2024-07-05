@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using VShopSchool.Web.Models;
@@ -18,9 +19,11 @@ namespace VShopSchool.Web.Services
             _clientFactory= clientFactory;
             _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
         }
-        public async Task<IEnumerable<ProductViewModel>> GetAllProducts()
+        public async Task<IEnumerable<ProductViewModel>> GetAllProducts(string token)
         {
 			var client = _clientFactory.CreateClient("ProductAPI");
+
+			PutTokenInHeaderAuthorization(token, client);
 
 			using (var response = await client.GetAsync(apiEndPoint))
 			{
@@ -37,9 +40,11 @@ namespace VShopSchool.Web.Services
 			return productsVM;
 		}
 
-		public async Task<ProductViewModel> FindProdById(int id)
+		public async Task<ProductViewModel> FindProdById(int id, string token)
         {
 			var client = _clientFactory.CreateClient("ProductAPI");
+
+			PutTokenInHeaderAuthorization(token, client);
 
 			using (var response = await client.GetAsync(apiEndPoint + id))
 			{
@@ -56,9 +61,11 @@ namespace VShopSchool.Web.Services
 			return productVM;
 		}
 
-        public async Task<ProductViewModel> CreateProduct(ProductViewModel productVM)
+        public async Task<ProductViewModel> CreateProduct(ProductViewModel productVM, string token)
         {
 			var client = _clientFactory.CreateClient("ProductAPI");
+
+			PutTokenInHeaderAuthorization(token, client);
 
 			StringContent content = new StringContent(JsonSerializer.Serialize(productVM), Encoding.UTF8, "application/json");
 			using (var response = await client.PostAsync(apiEndPoint, content))
@@ -76,9 +83,11 @@ namespace VShopSchool.Web.Services
 			return productVM;
 		}
 
-        public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVM)
+        public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVM, string token)
         {
 			var client = _clientFactory.CreateClient("ProductAPI");
+
+			PutTokenInHeaderAuthorization(token, client);
 
 			ProductViewModel productUpdated = new();
 			using (var response = await client.PutAsJsonAsync(apiEndPoint, productVM))
@@ -96,15 +105,23 @@ namespace VShopSchool.Web.Services
 			return productUpdated;
 		}
 
-        public async Task<bool> DeleteProdById(int id)
+        public async Task<bool> DeleteProdById(int id, string token)
         {
 			var client = _clientFactory.CreateClient("ProductAPI");
+
+			PutTokenInHeaderAuthorization(token, client);
+
 			using (var response = await client.DeleteAsync(apiEndPoint + id))
 			{
 				if (response.IsSuccessStatusCode)
 					return true;
 			}
 			return false;
+		}
+
+		private static void PutTokenInHeaderAuthorization(string token, HttpClient client)
+		{
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 		}
 	}
 }

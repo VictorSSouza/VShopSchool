@@ -44,17 +44,17 @@ namespace VShopSchool.ProductAPI.Services
         }
 
         // Put
-        public async Task RemoveCat(int id)
-        {
-            var catEntity = _catRepository.GetById(id).Result;
-            await _catRepository.Delete(catEntity.CategoryId);
-        }
-
-        // Delete
         public async Task UpdateCat(CategoryDTO catDTO)
         {
             var catEntity = _mapper.Map<Category>(catDTO);
             await _catRepository.Update(catEntity);
+        }
+
+        // Delete
+        public async Task RemoveCat(int id)
+        {
+            var catEntity = _catRepository.GetById(id).Result;
+            await _catRepository.Delete(catEntity.CategoryId);
         }
     }
 }

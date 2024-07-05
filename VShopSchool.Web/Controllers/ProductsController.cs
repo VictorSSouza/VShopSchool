@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VShopSchool.Web.Models;
@@ -7,6 +8,7 @@ using VShopSchool.Web.Services.Interfaces;
 
 namespace VShopSchool.Web.Controllers
 {
+    [Authorize(Roles = Role.Admin)]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
@@ -20,7 +22,7 @@ namespace VShopSchool.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductViewModel>>> Index()
         {
-            var result = await _productService.GetAllProducts();
+            var result = await _productService.GetAllProducts(await GetAccessToken());
 
             if (result is null)
                 return View("Error");
@@ -31,24 +33,23 @@ namespace VShopSchool.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {
-			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(), "CategoryId", "Name");
+			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 
 			return View();
 		}
 
         [HttpPost]
-		[Authorize]
         public async Task<IActionResult> CreateProduct(ProductViewModel productVM)
         {
 			if (ModelState.IsValid)
 			{
-				var result = await _productService.CreateProduct(productVM);
+				var result = await _productService.CreateProduct(productVM, await GetAccessToken());
 				if (result != null)
 					return RedirectToAction(nameof(Index));
 			}
 			else
 			{
-				ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(), "CategoryId", "Name");
+				ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 			}
 			return View(productVM);
 		}
@@ -56,9 +57,9 @@ namespace VShopSchool.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(int id)
         {
-			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(), "CategoryId", "Name");
+			ViewBag.CategoryId = new SelectList(await _categoryService.GetAllCategories(await GetAccessToken()), "CategoryId", "Name");
 
-			var result = await _productService.FindProdById(id);
+			var result = await _productService.FindProdById(id, await GetAccessToken());
 
 			if (result is null)
 				return View("Error");
@@ -67,12 +68,11 @@ namespace VShopSchool.Web.Controllers
 		}
 
         [HttpPost]
-		[Authorize]
         public async Task<IActionResult> UpdateProduct(ProductViewModel productVM)
         {
 			if (ModelState.IsValid)
 			{
-				var result = await _productService.UpdateProduct(productVM);
+				var result = await _productService.UpdateProduct(productVM, await GetAccessToken());
 
 				if (result is not null)
 					return RedirectToAction(nameof(Index));
@@ -81,10 +81,9 @@ namespace VShopSchool.Web.Controllers
 		}
 
 		[HttpGet]
-		[Authorize]
 		public async Task<ActionResult<ProductViewModel>> DeleteProduct(int id)
 		{
-			var result = await _productService.FindProdById(id);
+			var result = await _productService.FindProdById(id, await GetAccessToken());
 
 			if (result is null)
 				return View("Error");
@@ -93,15 +92,19 @@ namespace VShopSchool.Web.Controllers
 		}
 
 		[HttpPost, ActionName("DeleteProduct")]
-		[Authorize(Roles = Role.Admin)]
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
-			var result = await _productService.DeleteProdById(id);
+			var result = await _productService.DeleteProdById(id, await GetAccessToken());
 
 			if (!result)
 				return View("Error");
 
 			return RedirectToAction("Index");
+		}
+
+		private async Task<string> GetAccessToken()
+		{
+			return await HttpContext.GetTokenAsync("access_token");
 		}
 	}
 }
