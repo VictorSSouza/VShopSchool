@@ -1,0 +1,29 @@
+﻿@model VShopSchool.Web.Models.ProductViewModel
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <h3 class="mb-5">Detalhes do Produto</h3>
+    <div class="container row">
+        <div class="col-md-4 mb-2">
+            <img class="img-fluid" src="~/images/@Model.ImageUrl" />
+        </div>
+        <div class="col-md-4">
+            <h3>@Model.Name</h3>
+            <p class="mb-4">@Model.Description</p>
+            <p class="mb-4 text-black">
+                <b>
+                    @Model.Price.ToString("C")&nbsp;(@Model.Stock itens)
+                </b>
+            </p>
+            <div class="row">
+                <div class="col-5 col-md-5 mb-5">
+                    <button type="submit" class="btn btn-outline-success">Adicionar ao carrinho</button>
+                </div>
+                <div class="col-5 col-md-5 mb-5">
+                    <a asp-action="Index" class="btn btn-outline-info">Voltar para a lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
