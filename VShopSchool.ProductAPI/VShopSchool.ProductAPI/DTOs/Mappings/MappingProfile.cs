@@ -7,9 +7,9 @@ namespace VShopSchool.ProductAPI.DTOs.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Category, CategoryDTO>().ReverseMap();
+            CreateMap<CategoryDTO, Category>().ReverseMap();
             CreateMap<ProductDTO, Product>().ReverseMap();
-	    CreateMap<Product, ProductDTO>().ForMember(x => x.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+	        CreateMap<Product, ProductDTO>().ForMember(x => x.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
         }
     }
 }

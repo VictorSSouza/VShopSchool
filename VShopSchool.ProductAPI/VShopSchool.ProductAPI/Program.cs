@@ -57,6 +57,13 @@ namespace VShopSchool.ProductAPI
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            builder.Services.AddCors(options =>{
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyMethod()
+                                      .AllowAnyOrigin()
+                                      .AllowAnyHeader());
+            });
+
 	        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 	        builder.Services.AddScoped<IProductRepository, ProductRepository>();
 	        builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -92,6 +99,10 @@ namespace VShopSchool.ProductAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CorsPolicy");
+            app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 

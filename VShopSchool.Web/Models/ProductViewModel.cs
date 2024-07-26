@@ -28,7 +28,9 @@ namespace VShopSchool.Web.Models
         [Display(Name="Nome da categoria")]
         public string? CategoryName { get; set; }
 
-	    [Display(Name="Categorias")]
+        [Range(1, 100)]
+        public int Quantity { get; set; } = 1;
+        [Display(Name="Categorias")]
         public int CategoryId { get; set; }
     }
 }

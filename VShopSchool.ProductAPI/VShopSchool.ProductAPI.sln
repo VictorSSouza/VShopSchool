@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{76
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{344C797F-EA05-4257-B9ED-8DE84C6606CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShopSchool.IdentityServer", "VShopSchool.IdentityServer\VShopSchool.IdentityServer.csproj", "{1BE49FD7-06CA-4156-8EF2-43C015F35CE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VShopSchool.IdentityServer", "VShopSchool.IdentityServer\VShopSchool.IdentityServer.csproj", "{1BE49FD7-06CA-4156-8EF2-43C015F35CE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShopSchool.CartAPI", "VShopSchool.CartAPI\VShopSchool.CartAPI.csproj", "{CD2C8911-F866-4CDF-A329-65653234E8FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{1BE49FD7-06CA-4156-8EF2-43C015F35CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BE49FD7-06CA-4156-8EF2-43C015F35CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BE49FD7-06CA-4156-8EF2-43C015F35CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD2C8911-F866-4CDF-A329-65653234E8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2C8911-F866-4CDF-A329-65653234E8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2C8911-F866-4CDF-A329-65653234E8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2C8911-F866-4CDF-A329-65653234E8FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{D56E03A4-2DCC-4650-9722-4E6E5065F0BF} = {344C797F-EA05-4257-B9ED-8DE84C6606CC}
 		{B7F3F880-8C49-44E6-95D2-6D3BEDEDD56D} = {76E9B395-FF79-42A2-88F8-369FEC80538C}
 		{1BE49FD7-06CA-4156-8EF2-43C015F35CE8} = {344C797F-EA05-4257-B9ED-8DE84C6606CC}
+		{CD2C8911-F866-4CDF-A329-65653234E8FB} = {344C797F-EA05-4257-B9ED-8DE84C6606CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C873923-3B60-4F4C-A3A6-FB598BD2809D}
