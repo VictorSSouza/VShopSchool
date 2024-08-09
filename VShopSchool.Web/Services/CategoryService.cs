@@ -18,7 +18,7 @@ namespace VShopSchool.Web.Services
 		}
 		public async Task<IEnumerable<CategoryViewModel>> GetAllCategories(string token)
 		{
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 			IEnumerable<CategoryViewModel> categories;
 
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);			

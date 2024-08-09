@@ -21,7 +21,7 @@ namespace VShopSchool.Web.Services
         }
         public async Task<IEnumerable<ProductViewModel>> GetAllProducts(string token)
         {
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 
 			PutTokenInHeaderAuthorization(token, client);
 
@@ -42,7 +42,7 @@ namespace VShopSchool.Web.Services
 
 		public async Task<ProductViewModel> FindProdById(int id, string token)
         {
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 
 			PutTokenInHeaderAuthorization(token, client);
 
@@ -63,11 +63,11 @@ namespace VShopSchool.Web.Services
 
         public async Task<ProductViewModel> CreateProduct(ProductViewModel productVM, string token)
         {
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 
 			PutTokenInHeaderAuthorization(token, client);
 
-			StringContent content = new StringContent(JsonSerializer.Serialize(productVM), Encoding.UTF8, "application/json");
+			StringContent content = new (JsonSerializer.Serialize(productVM), Encoding.UTF8, "application/json");
 			using (var response = await client.PostAsync(apiEndPoint, content))
 			{
 				if (response.IsSuccessStatusCode)
@@ -85,7 +85,7 @@ namespace VShopSchool.Web.Services
 
         public async Task<ProductViewModel> UpdateProduct(ProductViewModel productVM, string token)
         {
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 
 			PutTokenInHeaderAuthorization(token, client);
 
@@ -107,7 +107,7 @@ namespace VShopSchool.Web.Services
 
         public async Task<bool> DeleteProdById(int id, string token)
         {
-			var client = _clientFactory.CreateClient("ProductAPI");
+			var client = _clientFactory.CreateClient("ProductApi");
 
 			PutTokenInHeaderAuthorization(token, client);
 

@@ -10,7 +10,7 @@ namespace VShopSchool.CartAPI.Repositories
     public class CartRepository : ICartRepository
     {
         private readonly AppDbContext _context;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public CartRepository(AppDbContext context, IMapper mapper)
         {
@@ -22,7 +22,7 @@ namespace VShopSchool.CartAPI.Repositories
         {
             Cart cart = new()
             {
-                CartHeader = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId),
+                CartHeader = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId)
             };
 
             // Buscando os itens
@@ -40,7 +40,8 @@ namespace VShopSchool.CartAPI.Repositories
             await SaveProductInDataBase(cartDTO, cart);
 
             // verifica o CartHeader
-            var cartHeader = await _context.CartHeaders.AsNoTracking().FirstOrDefaultAsync(c => c.UserId == cart.CartHeader.UserId);
+            var cartHeader = await _context.CartHeaders.AsNoTracking()
+                                                    .FirstOrDefaultAsync(c => c.UserId == cart.CartHeader.UserId);
 
             if (cartHeader is null)
             {
@@ -58,7 +59,8 @@ namespace VShopSchool.CartAPI.Repositories
         {
             // Se cartHeader não é null
             // verificar se CartItems possui o produto
-            var cartDetail = await _context.CartItems.AsNoTracking().FirstOrDefaultAsync(c => c.ProductId == cartDTO.CartItems.FirstOrDefault().Product.Id && c.CartHeaderId == cartHeader.Id);
+            var cartDetail = await _context.CartItems.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ProductId == cartDTO.CartItems.FirstOrDefault().Product.Id && c.CartHeaderId == cartHeader.Id);
 
             if (cartDetail is null)
             {
@@ -116,7 +118,6 @@ namespace VShopSchool.CartAPI.Repositories
                 int total = _context.CartItems.Where(c => c.CartHeaderId == cartItem.CartHeaderId).Count();
 
                 _context.CartItems.Remove(cartItem);
-                await _context.SaveChangesAsync();
 
                 if (total == 1)
                 {
@@ -124,8 +125,8 @@ namespace VShopSchool.CartAPI.Repositories
                                                  c => c.Id == cartItem.CartHeaderId);
 
                     _context.CartHeaders.Remove(cartHeader);
-                    await _context.SaveChangesAsync();
                 }
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -150,12 +151,12 @@ namespace VShopSchool.CartAPI.Repositories
             }
             return false;
         }
-        public Task<bool> ApplyCouponAsync(string userId, string couponCode)
+        public async Task<bool> ApplyCouponAsync(string userId, string couponCode)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteCouponAsync(string userId)
+        public async Task<bool> DeleteCouponAsync(string userId)
         {
             throw new NotImplementedException();
         }

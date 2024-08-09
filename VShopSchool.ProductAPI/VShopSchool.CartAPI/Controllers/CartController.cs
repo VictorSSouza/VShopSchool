@@ -16,13 +16,14 @@ namespace VShopSchool.CartAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet("getcart/{id}")]
+        [HttpGet("getcart/{userid}")]
         public async Task<ActionResult<CartDTO>> GetByUserId(string userId)
         {
             var cartDTO = await _repository.GetCartByUserIdAsync(userId);
 
             if (cartDTO is null)
                 return NotFound();
+
             return Ok(cartDTO);
         }
 
@@ -33,6 +34,7 @@ namespace VShopSchool.CartAPI.Controllers
 
             if (cart is null)
                 return NotFound();
+
             return Ok(cart);
         }
 
@@ -43,6 +45,7 @@ namespace VShopSchool.CartAPI.Controllers
 
             if (cart == null)
                 return NotFound();
+
             return Ok(cart);
         }
 
@@ -53,6 +56,7 @@ namespace VShopSchool.CartAPI.Controllers
 
             if (!status)
                 return BadRequest();
+
             return Ok(status);
         }
     }

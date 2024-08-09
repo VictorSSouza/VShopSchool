@@ -13,10 +13,6 @@ namespace VShopSchool.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-	        builder.Services.AddHttpClient("ProductAPI", c=>
-	        {
-		        c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProductApi"]);
-	        });
             builder.Services.AddAuthentication(options =>
                     {
                         options.DefaultScheme = "Cookies";
@@ -57,6 +53,19 @@ namespace VShopSchool.Web
                         }
              );
 
+            builder.Services.AddHttpClient<IProductService, ProductService>("ProductApi", c =>
+            {
+                c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProductApi"]);
+                c.DefaultRequestHeaders.Add("Connection", "Keep-Alive");
+                c.DefaultRequestHeaders.Add("Keep-Alive", "3600");
+                c.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-ProductAPI");
+            });
+            builder.Services.AddHttpClient<ICartService, CartService>("CartApi", c =>
+            {
+                c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CartApi"]);
+            });
+
+		    builder.Services.AddScoped<ICartService, CartService>();
 		    builder.Services.AddScoped<IProductService, ProductService>();
 			builder.Services.AddScoped<ICategoryService, CategoryService>();
 

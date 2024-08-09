@@ -10,8 +10,8 @@ using VShopSchool.CartAPI.Context;
 namespace VShopSchool.CartAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240726015851_Initial")]
-    partial class Initial
+    [Migration("20240802004722_CartInit")]
+    partial class CartInit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

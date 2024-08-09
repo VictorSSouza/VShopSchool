@@ -5,7 +5,7 @@
     <input asp-for="Id" hidden />
     <h3 class="mb-5">Detalhes do Produto</h3>
     <div class="container row">
-        <div class="col-md-4 mb-2">
+        <div class="col-md-4">
             <img class="img-fluid" src="~/images/@Model.ImageUrl" />
         </div>
         <div class="col-md-4">
@@ -16,8 +16,13 @@
                     @Model.Price.ToString("C")&nbsp;(@Model.Stock itens)
                 </b>
             </p>
-            <div class="row">
-                <div class="col-5 col-md-5 mb-5">
+            <div class="row text-black">
+                <label class="col-md-2 control-label">Quantidade</label>
+                <input asp-for="Quantity" class="form-control" />
+		        <span asp-validation-for="Quantity" class="text-warning"></span>
+	        </div>
+            <div class="row" style="padding-top:20px">
+                <div class="col-5 col-md-5">
                     <button type="submit" class="btn btn-outline-success">Adicionar ao carrinho</button>
                 </div>
                 <div class="col-5 col-md-5 mb-5">
