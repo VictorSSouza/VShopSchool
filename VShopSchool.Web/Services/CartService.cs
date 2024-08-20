@@ -19,7 +19,7 @@ namespace VShopSchool.Web.Services
             _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true};
         }
 
-        public async Task<CartViewModel> GetCartByUserIdAsync(int userId, string token)
+        public async Task<CartViewModel> GetCartByUserIdAsync(string userId, string token)
         {
             var client = _clientFactory.CreateClient("CartApi");
 			PutTokenInHeaderAuthorization(token, client);

@@ -4,7 +4,7 @@ namespace VShopSchool.Web.Services.Interfaces
 {
     public interface ICartService
     {
-        Task<CartViewModel> GetCartByUserIdAsync(int userId, string token);
+        Task<CartViewModel> GetCartByUserIdAsync(string userId, string token);
         Task<CartViewModel> AddItemToCartAsync(CartViewModel cartVM, string token);
         Task<CartViewModel> UpdateCartAsync(CartViewModel cartVM, string token);
         Task<bool> DeleteCartItemAsync(int cartId, string token);

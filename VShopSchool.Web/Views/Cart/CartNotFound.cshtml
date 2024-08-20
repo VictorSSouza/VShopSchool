@@ -1,0 +1,11 @@
+﻿@model string
+
+<h2>
+   <b class="text-danger">
+        @Html.ValidationMessage("Carrinho não encontrado")
+   </b>
+</h2>
+
+<a class="page-link" asp-area="" asp-controller="Home" asp-action="Index">
+    <h3>Retorna para a loja</h3>
+</a>
