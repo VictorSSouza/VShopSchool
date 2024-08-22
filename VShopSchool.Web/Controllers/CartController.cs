@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VShopSchool.Web.Models;
 using VShopSchool.Web.Services.Interfaces;
@@ -14,6 +15,7 @@ namespace VShopSchool.Web.Controllers
             _cartService = cartService;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             CartViewModel? cartVM = await GetCartByUser();
@@ -24,6 +26,35 @@ namespace VShopSchool.Web.Controllers
                 return View("/Views/Cart/CartNotFound.cshtml");
             }
             return View(cartVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ApplyCoupon(CartViewModel cartVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _cartService.ApplyCouponAsync(cartVM, await GetAccessToken());
+                if (result)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCoupon()
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _cartService.RemoveCouponAsync(GetUserId(), await GetAccessToken());
+
+                if (result)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View();
         }
 
         public async Task<IActionResult> RemoveItem(int id)
@@ -61,5 +92,6 @@ namespace VShopSchool.Web.Controllers
         {
             return await HttpContext.GetTokenAsync("access_token");
         }
+
     }
 }

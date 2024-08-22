@@ -59,5 +59,30 @@ namespace VShopSchool.CartAPI.Controllers
 
             return Ok(status);
         }
+
+        [HttpPost("applycoupon")]
+        public async Task<ActionResult<CartDTO>> ApplyCoupon(CartDTO cartDTO)
+        {
+            // Usa o id e o código do cupom que pertence ao carrinho para o metodo de aplicar desconto
+            var result = await _repository.ApplyCouponAsync(cartDTO.CartHeader.UserId,
+                                                            cartDTO.CartHeader.CouponCode);
+
+            if (!result)
+                return NotFound($"Header do carrinho não encontrado para usuário com id = {cartDTO.CartHeader.UserId}");
+
+            return Ok(result);
+        }
+
+        [HttpDelete("deletecoupon/{userId}")]
+        public async Task<ActionResult<CartDTO>> DeleteCoupon(string userId)
+        {
+            // Usa o id do carrinho para remover o cupom de desconto do valor total
+            var result = await _repository.DeleteCouponAsync(userId);
+
+            if (!result)
+                return NotFound($"Cupom de desconto não encontrado para o usuário com id = {userId}");
+
+            return Ok(result);
+        }
     }
 }

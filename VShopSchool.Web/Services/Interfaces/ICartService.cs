@@ -11,7 +11,7 @@ namespace VShopSchool.Web.Services.Interfaces
 
         // Tarefas em aberto
         Task<bool> ClearCartAsync(string userId, string token);
-        Task<bool> ApplyCouponAsync(CartViewModel cartVM, string couponCode, string token);
+        Task<bool> ApplyCouponAsync(CartViewModel cartVM, string token);
         Task<bool> RemoveCouponAsync(string userId, string token);
 
         Task<CartViewModel> CheckoutAsync(CartViewModel cartVM, string token);

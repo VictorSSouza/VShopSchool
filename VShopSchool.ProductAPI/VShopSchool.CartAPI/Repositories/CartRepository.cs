@@ -154,12 +154,38 @@ namespace VShopSchool.CartAPI.Repositories
         }
         public async Task<bool> ApplyCouponAsync(string userId, string couponCode)
         {
-            throw new NotImplementedException();
+            // Localiza o header do carrinho
+            var cartHdrApplyCoupon = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if(cartHdrApplyCoupon is not null)
+            {
+                // Adiciona o cupom de desconto no header do carrinho
+                cartHdrApplyCoupon.CouponCode = couponCode;
+                _context.CartHeaders.Update(cartHdrApplyCoupon);
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> DeleteCouponAsync(string userId)
         {
-            throw new NotImplementedException();
+            // Localiza o header do carrinho
+            var cartHdrDeleteCoupon = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (cartHdrDeleteCoupon is not null)
+            {
+                // Remove o cupom de desconto no header do carrinho
+                cartHdrDeleteCoupon.CouponCode = "";
+                _context.CartHeaders.Update(cartHdrDeleteCoupon);
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            return false;
         }
     }
 }

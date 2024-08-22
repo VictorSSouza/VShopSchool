@@ -1,11 +1,12 @@
 ﻿@model CartViewModel
 
-@if (Model.CartHeader != null && Model.CartItems.Count() > 0)
+@if (Model.CartHeader is not null && Model.CartItems.Count() > 0)
 {
     <form method="post">
         <br />
         <input asp-for="CartHeader.UserId" hidden />
         <input asp-for="CartHeader.Id" hidden />
+	    <input asp-for="CartItems" hidden />
         <div>
             <div class="card border mt-4 container">
                 <div class="card-header bg-info text-light ml-0 row">
@@ -43,7 +44,7 @@
                     {
                         <div class="row h-100">
                             <div class="col-3 col-md-2 text-center py-2">
-                                <img src="images/@item.Product.ImageUrl" class="rounded" width="100%" />
+                                <img src="images/@item.Product.ImageUrl" class="rounded" width="100" />
                             </div>
                             <div class="col-6 col-md-5">
                                 <h5>@item.Product.Name</h5>
@@ -71,11 +72,22 @@
                     }
                     <div class="row">
                         <div class="col-6">
-                            <span style="font-weight:bold">Desconto:</span>
-                            <input asp-for="CartHeader.CouponCode" />
-                            <button type="submit" asp-action="ApplyDiscount" class="btn btn-info" style="font-weight:bold;">
-                                Aplicar
-                            </button>
+                            @if(string.IsNullOrEmpty(Model.CartHeader.CouponCode))
+                            {
+                                <span style="font-weight:bold">Desconto:</span>
+                                <input asp-for="CartHeader.CouponCode" />
+                                <button type="submit" asp-action="ApplyCoupon" class="btn btn-info" class="btn-success" style="font-weight:bold;">
+                                    Aplicar
+                                </button>
+                            }
+                            else
+                            {
+                                <span style="font-weight:bold">Desconto:</span>
+                                <input asp-for="CartHeader.CouponCode" disabled />
+                                <button type="submit" asp-action="DeleteCoupon" class="btn btn-info" class="btn-danger" style="font-weight:bold;">
+                                    Remover
+                                </button>
+                            }
                         </div>
                         <div class="col-6 text-end">
                             <span class="text-danger" style="font-size:25px;font-weight:bolder">
