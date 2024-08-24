@@ -39,13 +39,13 @@ namespace VShopSchool.CouponAPI.Migrations
                         new
                         {
                             CouponId = 1,
-                            CouponCode = "VSHOP_Promo_10",
+                            CouponCode = "VSHOP_PROMO_10",
                             Discount = 10m
                         },
                         new
                         {
                             CouponId = 2,
-                            CouponCode = "VSHOP_Promo_20",
+                            CouponCode = "VSHOP_PROMO_20",
                             Discount = 20m
                         });
                 });

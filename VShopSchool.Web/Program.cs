@@ -64,12 +64,12 @@ namespace VShopSchool.Web
             {
                 c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CartApi"]);
             });
-         /*   builder.Services.AddHttpClient<ICouponService, CouponService>("CartApi", c =>
+            builder.Services.AddHttpClient<ICouponService, CouponService>("CouponApi", c =>
             {
                 c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CouponApi"]);
-            });*/
+            });
 
-          //  builder.Services.AddScoped<ICouponService, CouponService>();
+            builder.Services.AddScoped<ICouponService, CouponService>();
             builder.Services.AddScoped<ICartService, CartService>();
 		    builder.Services.AddScoped<IProductService, ProductService>();
 			builder.Services.AddScoped<ICategoryService, CategoryService>();

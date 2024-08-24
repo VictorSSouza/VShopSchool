@@ -37,8 +37,8 @@ namespace VShopSchool.CouponAPI.Migrations
                 columns: new[] { "CouponId", "CouponCode", "Discount" },
                 values: new object[,]
                 {
-                    { 1, "VSHOP_Promo_10", 10m },
-                    { 2, "VSHOP_Promo_20", 20m }
+                    { 1, "VSHOP_PROMO_10", 10m },
+                    { 2, "VSHOP_PROMO_20", 20m }
                 });
         }
 

@@ -7,6 +7,6 @@
         public string CouponCode { get; set; } = string.Empty;
 
         public decimal TotalAmount { get; set; } = 0.00m; // Valor total
-	public decimal Discount { get; set; } = 0.00m; // Valor do desconto
+	    public decimal Discount { get; set; } = 0.00m; // Valor do desconto
     }
 }

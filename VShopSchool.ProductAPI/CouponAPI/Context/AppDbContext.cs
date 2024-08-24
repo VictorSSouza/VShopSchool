@@ -17,13 +17,13 @@ namespace VShopSchool.CouponAPI.Context
             mb.Entity<Coupon>().HasData(new Coupon
             {
                 CouponId = 1,
-                CouponCode = "VSHOP_Promo_10",
+                CouponCode = "VSHOP_PROMO_10",
                 Discount = 10
             });
             mb.Entity<Coupon>().HasData(new Coupon
             {
                 CouponId = 2,
-                CouponCode = "VSHOP_Promo_20",
+                CouponCode = "VSHOP_PROMO_20",
                 Discount = 20
             });
         }
