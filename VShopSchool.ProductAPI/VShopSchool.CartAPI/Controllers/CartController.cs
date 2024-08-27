@@ -27,6 +27,20 @@ namespace VShopSchool.CartAPI.Controllers
             return Ok(cartDTO);
         }
 
+        [HttpPost("checkout")]
+        public async Task<ActionResult<CheckoutHeaderDTO>> Checkout(CheckoutHeaderDTO checkoutDTO)
+        {
+            var cart = await _repository.GetCartByUserIdAsync(checkoutDTO.UserId);
+
+            if (cart is null)
+                return NotFound($"Carrinho não encontrado para {checkoutDTO.UserId}");
+
+            checkoutDTO.CartItems = cart.CartItems;
+            checkoutDTO.DateTime = DateTime.Now;
+
+            return Ok(checkoutDTO);
+        }
+
         [HttpPost("addcart")]
         public async Task<ActionResult<CartDTO>> AddCart(CartDTO cartDTO)
         {

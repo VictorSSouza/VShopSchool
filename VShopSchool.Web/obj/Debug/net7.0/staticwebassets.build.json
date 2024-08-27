@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "icdegcboQvG5KmeHb91/jxUCAdCiB6RYfo35v1Pc5kc=",
+  "Hash": "61vSN5/dDC/3dVx1JE8A7TyTzByNyg62VvLEeqPlvjM=",
   "Source": "VShopSchool.Web",
   "BasePath": "_content/VShopSchool.Web",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\canetaesfero_1.jpeg"
+    },
+    {
+      "Identity": "C:\\temp\\VShopSchool\\VShopSchool.Web\\wwwroot\\images\\checkout_badge1.png",
+      "SourceId": "VShopSchool.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\temp\\VShopSchool\\VShopSchool.Web\\wwwroot\\",
+      "BasePath": "_content/VShopSchool.Web",
+      "RelativePath": "images/checkout_badge1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\checkout_badge1.png"
     },
     {
       "Identity": "C:\\temp\\VShopSchool\\VShopSchool.Web\\wwwroot\\images\\lapiscor_1.jpeg",

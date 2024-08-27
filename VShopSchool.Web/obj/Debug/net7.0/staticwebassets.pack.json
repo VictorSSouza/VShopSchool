@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\images\\canetaesfero_1.jpeg"
     },
     {
+      "Id": "C:\\temp\\VShopSchool\\VShopSchool.Web\\wwwroot\\images\\checkout_badge1.png",
+      "PackagePath": "staticwebassets\\images\\checkout_badge1.png"
+    },
+    {
       "Id": "C:\\temp\\VShopSchool\\VShopSchool.Web\\wwwroot\\images\\lapiscor_1.jpeg",
       "PackagePath": "staticwebassets\\images\\lapiscor_1.jpeg"
     },

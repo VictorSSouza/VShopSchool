@@ -12,7 +12,7 @@ namespace VShopSchool.Web.Services
         private readonly JsonSerializerOptions? _options;
         private const string apiEndPoint = "/api/cart";
         private CartViewModel cartVM = new();
-        private CartHeaderViewModel cartHeaderVM = new();
+        private CartHeaderViewModel cartHdVM = new();
 
         public CartService(IHttpClientFactory clientFactory)
         {
@@ -141,9 +141,26 @@ namespace VShopSchool.Web.Services
             return false;
         }
 
-        public Task<CartViewModel> CheckoutAsync(CartViewModel cartVM, string token)
+        public async Task<CartHeaderViewModel> CheckoutAsync(CartHeaderViewModel cartHeaderVM, string token)
         {
-            throw new NotImplementedException();
+            var client = _clientFactory.CreateClient("CartApi");
+            PutTokenInHeaderAuthorization(token, client);
+
+            StringContent content = new(JsonSerializer.Serialize(cartHeaderVM), Encoding.UTF8, "application/json");
+
+            using (var response = await client.PostAsync($"{apiEndPoint}/checkout/", content))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var apiResponse = await response.Content.ReadAsStreamAsync();
+                    cartHdVM = await JsonSerializer.DeserializeAsync<CartHeaderViewModel>(apiResponse, _options);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return cartHdVM;
         }
     }
 }
