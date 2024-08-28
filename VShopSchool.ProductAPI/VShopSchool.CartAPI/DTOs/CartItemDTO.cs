@@ -1,6 +1,4 @@
-﻿using VShopSchool.CartAPI.Models;
-
-namespace VShopSchool.CartAPI.DTOs
+﻿namespace VShopSchool.CartAPI.DTOs
 {
     public class CartItemDTO
     {

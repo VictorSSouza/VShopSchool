@@ -99,9 +99,19 @@ namespace VShopSchool.Web.Services
             return false;
         }
 
-        public Task<bool> ClearCartAsync(string userId, string token)
+        public async Task<bool> ClearCartAsync(string userId, string token)
         {
-            throw new NotImplementedException();
+            var client = _clientFactory.CreateClient("CartApi");
+            PutTokenInHeaderAuthorization(token, client);
+
+            using (var response = await client.DeleteAsync($"{apiEndPoint}/cleancart/{userId}"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static void PutTokenInHeaderAuthorization(string token, HttpClient client)

@@ -96,6 +96,18 @@ namespace VShopSchool.Web.Controllers
             return View(id);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CleanCart()
+        {
+            var result = await _cartService.ClearCartAsync(GetUserId(), await GetAccessToken());
+
+            if (result)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
         private async Task<CartViewModel?> GetCartByUser()
         {
             var cart = await _cartService.GetCartByUserIdAsync(GetUserId(), await GetAccessToken());

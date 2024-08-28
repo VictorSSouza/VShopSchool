@@ -22,7 +22,7 @@ namespace VShopSchool.CartAPI.Repositories
         {
             Cart cart = new()
             {
-                CartHeader = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId)
+                CartHeader = await _context.CartHeaders.FirstOrDefaultAsync(c => c.UserId == userId),
             };
 
             // Buscando os itens

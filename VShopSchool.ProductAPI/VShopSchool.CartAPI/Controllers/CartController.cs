@@ -16,7 +16,7 @@ namespace VShopSchool.CartAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet("getcart/{userid}")]
+        [HttpGet("getcart/{userId}")]
         public async Task<ActionResult<CartDTO>> GetByUserId(string userId)
         {
             var cartDTO = await _repository.GetCartByUserIdAsync(userId);
@@ -69,6 +69,17 @@ namespace VShopSchool.CartAPI.Controllers
             var status = await _repository.DeleteItemCartAsync(id);
 
             if (!status)
+                return BadRequest();
+
+            return Ok(status);
+        }
+
+        [HttpDelete("cleancart/{userId}")]
+        public async Task<ActionResult<bool>> RemoveCartAll(string userId)
+        {
+            var status = await _repository.CleanCartAsync(userId);
+
+            if(!status)
                 return BadRequest();
 
             return Ok(status);
